@@ -1,105 +1,60 @@
-/* Fonte e cores base */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #ffe4e1; /* rosa claro */
-    color: #333;
+    font-family: Arial, sans-serif;
+    background-color: #fff0f5;
     margin: 0;
     padding: 0;
 }
 
-/* Header fixo */
 header {
-    position: sticky;
-    top: 0;
-    background-color: #ffccd5; /* rosa rose */
-    padding: 15px;
+    background-color: #ffb6c1;
+    color: white;
+    padding: 20px;
     text-align: center;
-    z-index: 100;
 }
 
 header h1 {
     margin: 0;
-    color: #fff;
 }
 
-header nav a {
-    color: #fff;
-    margin: 0 15px;
+.btn {
+    background-color: #fff;
+    color: #ff69b4;
+    padding: 10px 15px;
     text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: inline-block;
+    transition: 0.3s;
 }
 
-header nav a:hover {
-    color: #ffedf0;
+.btn:hover {
+    background-color: #ff69b4;
+    color: white;
 }
 
-/* Grid de lojas */
-.lojas-grid {
+main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 30px;
-    gap: 20px;
+    padding: 20px;
 }
 
-/* Cards das lojas */
-.loja-card {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 15px;
-    width: 250px;
+.card {
+    background-color: #ffe4e1;
+    border-radius: 10px;
+    width: 200px;
+    margin: 15px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
 }
 
-.loja-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+.card:hover {
+    transform: scale(1.05);
 }
 
-.loja-card img {
+.card img {
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.loja-card img:hover {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-}
-
-.loja-card button {
-    padding: 8px 15px;
-    border: none;
-    border-radius: 6px;
-    background-color: #ffccd5;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.loja-card button:hover {
-    background-color: #ffb3c1;
-    transform: scale(1.05);
-}
-
-/* Footer */
-footer {
-    background-color: #ffccd5;
-    color: #fff;
-    text-align: center;
-    padding: 15px;
-    margin-top: 30px;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .lojas-grid {
-        flex-direction: column;
-        align-items: center;
-    }
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
