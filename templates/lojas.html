@@ -1,23 +1,16 @@
-{% extends 'layout.html' %}
-
-{% block content %}
-<h2>Lista de Lojas</h2>
-{% if lojas %}
-<table>
-    <tr>
-        <th>Nome</th>
-        <th>Endereço</th>
-        <th>Telefone</th>
-    </tr>
-    {% for loja in lojas %}
-    <tr>
-        <td>{{ loja.nome }}</td>
-        <td>{{ loja.endereco }}</td>
-        <td>{{ loja.telefone }}</td>
-    </tr>
-    {% endfor %}
-</table>
-{% else %}
-<p>Nenhuma loja cadastrada ainda.</p>
-{% endif %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Lojas</title>
+</head>
+<body>
+    <h1>Lista de Lojas</h1>
+    <ul>
+        {% for loja in lojas %}
+            <li>{{ loja.nome }} - {{ loja.endereco }} - {{ loja.telefone }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/cadastrar">Cadastrar nova loja</a>
+</body>
+</html>
