@@ -1,46 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Guia Comercial</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Comercial</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+    <header>
+        <h1>Guia Comercial</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Cadastrar Loja</a>
+        </nav>
+    </header>
 
-<header>
-<h1>🌸 Guia Comercial da Cidade</h1>
-<p>Encontre lojas, serviços e empresas perto de você</p>
-</header>
+    <main>
+        <section class="lojas">
+            {% for loja in lojas %}
+            <div class="card">
+                <img src="{{ url_for('static', filename='imagens/' + loja.imagem) }}" alt="{{ loja.nome }}">
+                <h2>{{ loja.nome }}</h2>
+                <p>{{ loja.descricao }}</p>
+                <a href="{{ loja.link }}" target="_blank">Visitar</a>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
 
-<nav>
-<a href="/">Início</a>
-<a href="/cadastro">Cadastrar Loja</a>
-</nav>
-
-<div class="container">
-
-{% for loja in lojas %}
-<div class="card">
-
-<img src="{{ url_for('static', filename='imagens/' + loja.imagem) }}">
-
-<h2>{{ loja.nome }}</h2>
-
-<p><b>Categoria:</b> {{ loja.categoria }}</p>
-
-<p>{{ loja.descricao }}</p>
-
-<button>Ver Contato</button>
-
-</div>
-{% endfor %}
-
-</div>
-
-<footer>
-<p>© 2026 Guia Comercial - Criado por Thais</p>
-</footer>
-
+    <footer>
+        <p>© 2026 Guia Comercial. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
