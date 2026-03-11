@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro de Loja</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="utf-8">
+    <title>Cadastrar Loja</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; padding: 20px; }
+        h1 { color: #4CAF50; }
+        input, textarea { width: 100%; padding: 10px; margin: 5px 0 15px; border-radius: 5px; border: 1px solid #ccc; }
+        button { background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        a { display: inline-block; margin-top: 15px; text-decoration: none; color: #555; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>🌸 Cadastrar Loja</h1>
-        <a href="{{ url_for('home') }}" class="btn">Voltar</a>
-    </header>
-
-    <main>
-        <form method="POST">
-            <label>Nome da Loja:</label>
-            <input type="text" name="nome" required>
-
-            <label>Endereço:</label>
-            <input type="text" name="endereco" required>
-
-            <label>Imagem (URL):</label>
-            <input type="text" name="imagem">
-
-            <button type="submit">Cadastrar</button>
-        </form>
-    </main>
+    <h1>Cadastrar Loja</h1>
+    <form method="POST">
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+        <label>Endereço:</label>
+        <input type="text" name="endereco" required>
+        <label>Telefone:</label>
+        <input type="text" name="telefone">
+        <label>Descrição:</label>
+        <textarea name="descricao"></textarea>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <a href="{{ url_for('listar_lojas') }}">Voltar para lista de lojas</a>
 </body>
 </html>
