@@ -1,100 +1,105 @@
-/* Reset básico */
-* {
+/* Fonte e cores base */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffe4e1; /* rosa claro */
+    color: #333;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
 }
 
-body {
-    background-color: #fff0f5; /* Rose claro */
-    color: #333;
-}
-
+/* Header fixo */
 header {
-    background-color: #ff99aa;
-    padding: 20px;
+    position: sticky;
+    top: 0;
+    background-color: #ffccd5; /* rosa rose */
+    padding: 15px;
     text-align: center;
-    color: white;
+    z-index: 100;
 }
 
 header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    margin: 0;
+    color: #fff;
 }
 
-nav a {
+header nav a {
+    color: #fff;
     margin: 0 15px;
-    color: white;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
-nav a:hover {
-    color: #ffe0e6;
+header nav a:hover {
+    color: #ffedf0;
 }
 
-main {
-    padding: 40px 20px;
-}
-
-.lojas {
+/* Grid de lojas */
+.lojas-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 30px;
     gap: 20px;
 }
 
-.card {
-    background-color: #ffe0e6;
-    padding: 20px;
-    border-radius: 15px;
+/* Cards das lojas */
+.loja-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 15px;
     width: 250px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.loja-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
-.card img {
+.loja-card img {
     width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.card h2 {
-    font-size: 1.5rem;
+    border-radius: 8px;
     margin-bottom: 10px;
-    color: #ff4d6d;
+    transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-.card p {
-    font-size: 1rem;
-    margin-bottom: 15px;
+.loja-card img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
-.card a {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #ff4d6d;
-    color: white;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: 0.3s;
+.loja-card button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ffccd5;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.card a:hover {
-    background-color: #ff1a3c;
+.loja-card button:hover {
+    background-color: #ffb3c1;
+    transform: scale(1.05);
 }
 
+/* Footer */
 footer {
-    background-color: #ff99aa;
-    padding: 15px;
+    background-color: #ffccd5;
+    color: #fff;
     text-align: center;
-    color: white;
-    margin-top: 40px;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .lojas-grid {
+        flex-direction: column;
+        align-items: center;
+    }
 }

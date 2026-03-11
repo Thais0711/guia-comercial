@@ -11,26 +11,27 @@
     <header>
         <h1>Guia Comercial</h1>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Cadastrar Loja</a>
+            <a href="#">Início</a>
+            <a href="#">Lojas</a>
+            <a href="#">Contato</a>
         </nav>
     </header>
 
     <main>
-        <section class="lojas">
+        <section class="lojas-grid">
             {% for loja in lojas %}
-            <div class="card">
+            <div class="loja-card">
                 <img src="{{ url_for('static', filename='imagens/' + loja.imagem) }}" alt="{{ loja.nome }}">
                 <h2>{{ loja.nome }}</h2>
                 <p>{{ loja.descricao }}</p>
-                <a href="{{ loja.link }}" target="_blank">Visitar</a>
+                <button>Visitar</button>
             </div>
             {% endfor %}
         </section>
     </main>
 
     <footer>
-        <p>© 2026 Guia Comercial. Todos os direitos reservados.</p>
+        <p>&copy; 2026 Guia Comercial. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>
