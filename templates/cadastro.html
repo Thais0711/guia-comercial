@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>Cadastrar Loja</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<h1>Cadastrar Nova Loja</h1>
+
+<form method="POST">
+
+<input type="text" name="nome" placeholder="Nome da loja" required>
+
+<input type="text" name="categoria" placeholder="Categoria" required>
+
+<input type="text" name="descricao" placeholder="Descrição" required>
+
+<input type="text" name="whatsapp" placeholder="WhatsApp" required>
+
+<button type="submit">Cadastrar</button>
+
+</form>
+
+</body>
+
+</html>
