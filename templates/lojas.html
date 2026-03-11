@@ -2,14 +2,70 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Lojas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Comercial - Lojas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .loja-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+        .loja-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .loja-nome {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .loja-categoria {
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1>Loja Comercial</h1>
-    <ul>
-        {% for loja in lojas %}
-            <li>{{ loja.nome }} - {{ loja.categoria }}</li>
-        {% endfor %}
-    </ul>
+    <header>
+        <h1>Guia Comercial</h1>
+        <p>Confira as lojas cadastradas</p>
+    </header>
+    <main>
+        {% if lojas %}
+            {% for loja in lojas %}
+                <div class="loja-card">
+                    <div class="loja-nome">{{ loja.nome }}</div>
+                    <div class="loja-categoria">{{ loja.categoria }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhuma loja cadastrada ainda.</p>
+        {% endif %}
+    </main>
 </body>
 </html>
