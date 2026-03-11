@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Lojas</title>
+</head>
+<body>
+    <h1>Loja Comercial</h1>
+    <ul>
+        {% for loja in lojas %}
+            <li>{{ loja.nome }} - {{ loja.categoria }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
