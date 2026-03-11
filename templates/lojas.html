@@ -1,16 +1,31 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Lojas</title>
-</head>
-<body>
-    <h1>Lista de Lojas</h1>
-    <ul>
-        {% for loja in lojas %}
-            <li>{{ loja.nome }} - {{ loja.endereco }} - {{ loja.telefone }}</li>
-        {% endfor %}
-    </ul>
-    <a href="/cadastrar">Cadastrar nova loja</a>
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Adicionar Loja</h2>
+    <form method="POST" action="{{ url_for('adicionar_loja') }}">
+        <input type="text" name="nome" placeholder="Nome da loja" required>
+        <input type="text" name="endereco" placeholder="Endereço" required>
+        <input type="text" name="telefone" placeholder="Telefone">
+        <button type="submit">Adicionar</button>
+    </form>
+</div>
+
+<h2>Lista de Lojas</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Telefone</th>
+    </tr>
+    {% for loja in lojas %}
+    <tr>
+        <td>{{ loja.id }}</td>
+        <td>{{ loja.nome }}</td>
+        <td>{{ loja.endereco }}</td>
+        <td>{{ loja.telefone }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
