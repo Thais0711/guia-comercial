@@ -1,72 +1,51 @@
 body{
-font-family: Arial, Helvetica, sans-serif;
+font-family: Arial;
 margin:0;
-background: linear-gradient(120deg,#ff9a9e,#fad0c4);
+background:#fff0f5;
+}
+
+/* TOPO */
+
+header{
+background:#ff4f81;
+color:white;
 text-align:center;
-}
-
-/* TITULO */
-
-h1{
-color:white;
 padding:30px;
-font-size:40px;
 }
 
-/* BOTÃO CADASTRO */
+nav{
+background:#ff7aa2;
+text-align:center;
+padding:15px;
+}
 
-.botao-cadastro{
-display:inline-block;
-margin:10px;
-padding:12px 25px;
-background:#e84393;
+nav a{
 color:white;
-text-decoration:none;
-border-radius:10px;
-font-weight:bold;
-}
-
-/* BUSCA */
-
-form{
 margin:20px;
-}
-
-input{
-padding:12px;
-width:230px;
-border-radius:8px;
-border:none;
-}
-
-button{
-padding:12px;
-border:none;
-background:#e84393;
-color:white;
-border-radius:8px;
-cursor:pointer;
+text-decoration:none;
 font-weight:bold;
+font-size:18px;
 }
 
-/* LISTA DE LOJAS */
+/* CONTAINER */
 
-.lojas{
+.container{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-margin-top:20px;
+padding:30px;
 }
 
 /* CARD DAS LOJAS */
 
 .card{
 background:white;
-width:260px;
-margin:20px;
-padding:20px;
-border-radius:15px;
-box-shadow:0px 8px 20px rgba(0,0,0,0.2);
+width:250px;
+margin:15px;
+padding:15px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+text-align:center;
 transition:0.3s;
 }
 
@@ -76,59 +55,36 @@ transform:scale(1.05);
 
 .card img{
 width:100%;
-height:160px;
+height:150px;
 object-fit:cover;
 border-radius:10px;
-margin-bottom:10px;
 }
 
 .card h2{
-color:#d63384;
+color:#ff4f81;
 }
 
-.card p{
-color:#555;
-}
+/* BOTÃO */
 
-/* CATEGORIA */
-
-.categoria{
-color:#d63384;
-font-weight:bold;
-}
-
-/* BOTÃO WHATSAPP */
-
-.card a{
-display:block;
-margin-top:10px;
-background:#25D366;
+button{
+background:#ff4f81;
 color:white;
+border:none;
 padding:10px;
-text-decoration:none;
-border-radius:10px;
-font-weight:bold;
-}/* MENU */
-
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#d63384;
-padding:15px 40px;
+border-radius:5px;
+cursor:pointer;
 }
 
-.logo{
+button:hover{
+background:#e6396b;
+}
+
+/* RODAPÉ */
+
+footer{
+background:#ff4f81;
 color:white;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin:0 15px;
-font-weight:bold;
-}
-
-nav a:hover{
-text-decoration:underline;
+text-align:center;
+padding:20px;
+margin-top:40px;
 }

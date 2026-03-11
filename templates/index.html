@@ -1,68 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-
 <meta charset="UTF-8">
 <title>Guia Comercial</title>
-
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
 </head>
 
 <body>
 
 <header>
-
-<h2 class="logo">Guia Comercial</h2>
-
-<nav>
-
-<a href="/">Início</a>
-<a href="/">Lojas</a>
-<a href="/cadastro">Cadastrar Loja</a>
-<a href="#">Contato</a>
-
-</nav>
-
+<h1>🌸 Guia Comercial da Cidade</h1>
+<p>Encontre lojas, serviços e empresas perto de você</p>
 </header>
 
-<h1>🏪 Lojas da Cidade</h1>
+<nav>
+<a href="/">Início</a>
+<a href="/cadastro">Cadastrar Loja</a>
+</nav>
 
-<form method="GET">
-
-<input type="text" name="busca" placeholder="Buscar lojas...">
-
-<button type="submit">Buscar</button>
-
-</form>
-
-<div class="lojas">
+<div class="container">
 
 {% for loja in lojas %}
-
 <div class="card">
 
-<a href="/loja/{{ loja.id }}">
 <img src="{{ url_for('static', filename='imagens/' + loja.imagem) }}">
-</a>
 
 <h2>{{ loja.nome }}</h2>
 
-<p class="categoria">{{ loja.categoria }}</p>
+<p><b>Categoria:</b> {{ loja.categoria }}</p>
 
 <p>{{ loja.descricao }}</p>
 
-<a href="https://wa.me/{{ loja.whatsapp }}" target="_blank">
-Falar no WhatsApp
-</a>
+<button>Ver Contato</button>
 
 </div>
-
 {% endfor %}
 
 </div>
 
-</body>
+<footer>
+<p>© 2026 Guia Comercial - Criado por Thais</p>
+</footer>
 
+</body>
 </html>
