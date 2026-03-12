@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Guia Comercial</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>📍 Guia Comercial</h1>
+
+<a class="btn" href="/">Início</a>
+<a class="btn" href="/add">Cadastrar Empresa</a>
+
+</header>
+
+<div class="container">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+</body>
+
+</html>

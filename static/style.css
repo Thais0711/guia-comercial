@@ -1,48 +1,59 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
+body{
+font-family:Arial;
+margin:0;
+background:#f4f4f4;
 }
 
-header {
-    background: #007bff;
-    color: white;
-    padding: 10px 20px;
+header{
+background:#0077cc;
+color:white;
+padding:20px;
+text-align:center;
 }
 
-header h1 {
-    margin: 0;
+.btn{
+background:white;
+color:#0077cc;
+padding:8px 12px;
+border-radius:5px;
+margin:5px;
+display:inline-block;
 }
 
-nav a {
-    color: white;
-    margin-right: 15px;
-    text-decoration: none;
+.container{
+padding:40px;
 }
 
-main {
-    padding: 20px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-li {
-    background: white;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
+.card img{
+width:100%;
+border-radius:8px;
 }
 
-footer {
-    text-align: center;
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+.whatsapp{
+background:#25D366;
+color:white;
+padding:8px 12px;
+border-radius:6px;
+display:inline-block;
+margin-top:10px;
+}
+
+.delete{
+background:red;
+color:white;
+padding:6px 10px;
+border-radius:5px;
 }

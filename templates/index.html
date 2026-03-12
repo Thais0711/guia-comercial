@@ -1,24 +1,55 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Guia Comercial</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <header>
-        <h1>🌸 Guia Comercial</h1>
-        <a href="{{ url_for('cadastro') }}" class="btn">Cadastrar Loja</a>
-    </header>
+{% extends "base.html" %}
 
-    <main>
-        {% for loja in lojas %}
-        <div class="card">
-            <img src="{{ loja.imagem }}" alt="{{ loja.nome }}">
-            <h2>{{ loja.nome }}</h2>
-            <p>{{ loja.endereco }}</p>
-        </div>
-        {% endfor %}
-    </main>
-</body>
-</html>
+{% block content %}
+
+<h2>Buscar Empresa</h2>
+
+<form method="GET">
+
+<input type="text" name="busca" placeholder="Digite o nome da empresa">
+
+<button type="submit">Buscar</button>
+
+</form>
+
+<br>
+
+<h2>Empresas cadastradas</h2>
+
+<div class="grid">
+
+{% for empresa in empresas %}
+
+<div class="card">
+
+<h3>{{ empresa.nome }}</h3>
+
+{% if empresa.imagem %}
+<img src="{{ url_for('static', filename='uploads/' + empresa.imagem) }}">
+{% endif %}
+
+<p>{{ empresa.descricao }}</p>
+
+<p><b>Cidade:</b> {{ empresa.cidade }}</p>
+
+<p><b>Endereço:</b> {{ empresa.endereco }}</p>
+
+<p><b>Telefone:</b> {{ empresa.telefone }}</p>
+
+<a class="whatsapp"
+href="https://wa.me/{{ empresa.telefone }}"
+target="_blank">
+💬 WhatsApp
+</a>
+
+<br><br>
+
+<a class="delete" href="/deletar/{{ empresa.id }}">Excluir</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

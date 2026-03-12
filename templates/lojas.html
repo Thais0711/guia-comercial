@@ -1,31 +1,23 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="form-container">
-    <h2>Adicionar Loja</h2>
-    <form method="POST" action="{{ url_for('adicionar_loja') }}">
-        <input type="text" name="nome" placeholder="Nome da loja" required>
-        <input type="text" name="endereco" placeholder="Endereço" required>
-        <input type="text" name="telefone" placeholder="Telefone">
-        <button type="submit">Adicionar</button>
-    </form>
-</div>
-
-<h2>Lista de Lojas</h2>
+<h2>Lojas Cadastradas</h2>
+{% if lojas %}
 <table>
     <tr>
-        <th>ID</th>
         <th>Nome</th>
         <th>Endereço</th>
         <th>Telefone</th>
     </tr>
     {% for loja in lojas %}
     <tr>
-        <td>{{ loja.id }}</td>
         <td>{{ loja.nome }}</td>
         <td>{{ loja.endereco }}</td>
         <td>{{ loja.telefone }}</td>
     </tr>
     {% endfor %}
 </table>
+{% else %}
+<p>Nenhuma loja cadastrada ainda.</p>
+{% endif %}
 {% endblock %}

@@ -1,46 +1,95 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
 
-# Configuração do banco de dados SQLite dentro da pasta 'instance'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.instance_path, 'lojas.db')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+basedir = os.path.abspath(os.path.dirname(__file__))
 
-# Cria a pasta instance se não existir
-os.makedirs(app.instance_path, exist_ok=True)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "database.db")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+UPLOAD_FOLDER = os.path.join("static", "uploads")
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 db = SQLAlchemy(app)
 
-# Modelo da tabela Lojas
-class Loja(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(100), nullable=False)
-    endereco = db.Column(db.String(200), nullable=False)
-    telefone = db.Column(db.String(20), nullable=True)
 
-# Cria o banco de dados automaticamente
+class Empresa(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(100))
+    descricao = db.Column(db.String(200))
+    cidade = db.Column(db.String(100))
+    endereco = db.Column(db.String(200))
+    telefone = db.Column(db.String(20))
+    imagem = db.Column(db.String(200))
+
+
 with app.app_context():
     db.create_all()
 
-# Rota inicial - lista todas as lojas
-@app.route('/')
-def listar_lojas():
-    lojas = Loja.query.all()
-    return render_template('lojas.html', lojas=lojas)
 
-# Rota para adicionar loja
-@app.route('/adicionar', methods=['POST'])
-def adicionar_loja():
-    nome = request.form.get('nome')
-    endereco = request.form.get('endereco')
-    telefone = request.form.get('telefone')
-    if nome and endereco:
-        nova_loja = Loja(nome=nome, endereco=endereco, telefone=telefone)
-        db.session.add(nova_loja)
+@app.route("/", methods=["GET"])
+def index():
+
+    busca = request.args.get("busca")
+
+    if busca:
+        empresas = Empresa.query.filter(Empresa.nome.contains(busca)).all()
+    else:
+        empresas = Empresa.query.all()
+
+    return render_template("index.html", empresas=empresas)
+
+
+@app.route("/add", methods=["GET", "POST"])
+def add_empresa():
+
+    if request.method == "POST":
+
+        nome = request.form["nome"]
+        descricao = request.form["descricao"]
+        cidade = request.form["cidade"]
+        endereco = request.form["endereco"]
+        telefone = request.form["telefone"]
+
+        imagem_nome = ""
+
+        if "imagem" in request.files:
+            file = request.files["imagem"]
+
+            if file.filename != "":
+                imagem_nome = file.filename
+                caminho = os.path.join(app.config["UPLOAD_FOLDER"], imagem_nome)
+                file.save(caminho)
+
+        nova = Empresa(
+            nome=nome,
+            descricao=descricao,
+            cidade=cidade,
+            endereco=endereco,
+            telefone=telefone,
+            imagem=imagem_nome
+        )
+
+        db.session.add(nova)
         db.session.commit()
-    return redirect(url_for('listar_lojas'))
 
-if __name__ == '__main__':
+        return redirect("/")
+
+    return render_template("add.html")
+
+
+@app.route("/deletar/<int:id>")
+def deletar(id):
+
+    empresa = Empresa.query.get(id)
+
+    db.session.delete(empresa)
+    db.session.commit()
+
+    return redirect("/")
+
+
+if __name__ == "__main__":
     app.run(debug=True)
