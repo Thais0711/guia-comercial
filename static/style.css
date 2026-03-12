@@ -1,59 +1,34 @@
-body{
-font-family:Arial;
-margin:0;
-background:#f4f4f4;
-}
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Arial', sans-serif; background:#f4f6f8; color:#333;}
 
-header{
-background:#0077cc;
-color:white;
-padding:20px;
-text-align:center;
-}
+header {background:#004aad; color:white; padding:15px 20px;}
+.header-container {display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;}
+header h1 {font-size:1.8rem;}
+header nav a.btn {text-decoration:none; color:white; background:#007bff; padding:8px 15px; margin-left:10px; border-radius:5px; transition:0.3s;}
+header nav a.btn:hover {background:#0056b3;}
 
-.btn{
-background:white;
-color:#0077cc;
-padding:8px 12px;
-border-radius:5px;
-margin:5px;
-display:inline-block;
-}
+.container {padding:20px; max-width:1200px; margin:auto;}
+h2 {margin-bottom:20px; color:#004aad; text-align:center;}
 
-.container{
-padding:40px;
-}
+.search-form {display:flex; justify-content:center; margin-bottom:20px;}
+.search-form input {padding:10px; width:250px; border-radius:5px 0 0 5px; border:1px solid #ccc;}
+.search-form button {padding:10px; background:#007bff; color:white; border:none; border-radius:0 5px 5px 0; cursor:pointer;}
+.search-form button:hover {background:#0056b3;}
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+.form-card {background:white; padding:20px; border-radius:10px; margin-bottom:30px; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+form input {width:100%; padding:10px; margin:8px 0; border-radius:5px; border:1px solid #ccc;}
+form button {background:#28a745; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; transition:0.3s; margin-top:10px;}
+form button:hover {background:#218838;}
 
-.card{
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
+.card-grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px;}
+.card {background:white; padding:20px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+.card h3 {margin-bottom:10px; color:#007bff;}
+.card-buttons {margin-top:10px; display:flex; justify-content:flex-start; gap:10px;}
+.btn-whatsapp {background:#25D366; color:white; padding:5px 10px; border-radius:5px; text-decoration:none; display:flex; align-items:center;}
+.btn-whatsapp:hover {background:#1ebe57;}
+.btn-edit {background:#ffc107; color:black; padding:5px 10px; border-radius:5px; text-decoration:none; display:flex; align-items:center;}
+.btn-edit:hover {background:#e0a800;}
+.btn-delete {background:#dc3545; color:white; padding:5px 10px; border-radius:5px; text-decoration:none; display:flex; align-items:center;}
+.btn-delete:hover {background:#b52b3a;}
 
-.card img{
-width:100%;
-border-radius:8px;
-}
-
-.whatsapp{
-background:#25D366;
-color:white;
-padding:8px 12px;
-border-radius:6px;
-display:inline-block;
-margin-top:10px;
-}
-
-.delete{
-background:red;
-color:white;
-padding:6px 10px;
-border-radius:5px;
-}
+footer {text-align:center; padding:15px 0; background:#004aad; color:white; position:fixed; width:100%; bottom:0;}

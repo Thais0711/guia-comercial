@@ -1,37 +1,12 @@
 {% extends "base.html" %}
-
 {% block content %}
-
-<h2>Cadastrar Empresa</h2>
-
-<form method="POST" enctype="multipart/form-data">
-
-<input type="text" name="nome" placeholder="Nome da empresa" required>
-
-<br>
-
-<input type="text" name="descricao" placeholder="Descrição">
-
-<br>
-
-<input type="text" name="cidade" placeholder="Cidade">
-
-<br>
-
-<input type="text" name="endereco" placeholder="Endereço">
-
-<br>
-
-<input type="text" name="telefone" placeholder="Telefone ou WhatsApp">
-
-<br>
-
-<input type="file" name="imagem">
-
-<br><br>
-
-<button type="submit">Cadastrar</button>
-
-</form>
-
+<div class="form-card">
+    <h2>Adicionar Loja</h2>
+    <form method="POST">
+        <input type="text" name="nome" placeholder="Nome da Loja" required>
+        <input type="text" name="endereco" placeholder="Endereço" required>
+        <input type="text" name="telefone" placeholder="Telefone" required>
+        <button type="submit">Adicionar</button>
+    </form>
+</div>
 {% endblock %}

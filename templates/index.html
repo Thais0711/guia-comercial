@@ -1,55 +1,28 @@
 {% extends "base.html" %}
-
 {% block content %}
+<h2>Empresas Cadastradas</h2>
 
-<h2>Buscar Empresa</h2>
-
-<form method="GET">
-
-<input type="text" name="busca" placeholder="Digite o nome da empresa">
-
-<button type="submit">Buscar</button>
-
+<form method="GET" class="search-form">
+    <input type="text" name="search" placeholder="Pesquisar por nome ou cidade..." value="{{ query or '' }}">
+    <button type="submit"><i class="fa fa-search"></i> Buscar</button>
 </form>
 
-<br>
-
-<h2>Empresas cadastradas</h2>
-
-<div class="grid">
-
-{% for empresa in empresas %}
-
-<div class="card">
-
-<h3>{{ empresa.nome }}</h3>
-
-{% if empresa.imagem %}
-<img src="{{ url_for('static', filename='uploads/' + empresa.imagem) }}">
-{% endif %}
-
-<p>{{ empresa.descricao }}</p>
-
-<p><b>Cidade:</b> {{ empresa.cidade }}</p>
-
-<p><b>Endereço:</b> {{ empresa.endereco }}</p>
-
-<p><b>Telefone:</b> {{ empresa.telefone }}</p>
-
-<a class="whatsapp"
-href="https://wa.me/{{ empresa.telefone }}"
-target="_blank">
-💬 WhatsApp
-</a>
-
-<br><br>
-
-<a class="delete" href="/deletar/{{ empresa.id }}">Excluir</a>
-
+<div class="card-grid">
+    {% for loja in lojas %}
+    <div class="card">
+        <h3>{{ loja.nome }}</h3>
+        <p><i class="fa fa-map-marker-alt"></i> {{ loja.endereco }}</p>
+        <p><i class="fa fa-phone"></i> {{ loja.telefone }}</p>
+        <div class="card-buttons">
+            <a class="btn-whatsapp" href="https://api.whatsapp.com/send?phone={{ loja.telefone|replace(' ','') }}&text=Olá {{ loja.nome }}" target="_blank">
+                <i class="fa fa-whatsapp"></i> WhatsApp
+            </a>
+            <a class="btn-edit" href="/editar/{{ loja.id }}"><i class="fa fa-edit"></i> Editar</a>
+            <a class="btn-delete" href="/deletar/{{ loja.id }}"><i class="fa fa-trash"></i> Excluir</a>
+        </div>
+    </div>
+    {% else %}
+    <p>Nenhuma empresa encontrada.</p>
+    {% endfor %}
 </div>
-
-{% endfor %}
-
-</div>
-
 {% endblock %}
