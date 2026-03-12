@@ -1,147 +1,104 @@
-/* Reset básico */
-* {
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    background: #f4f4f4;
 }
 
-/* Fonte e fundo */
-body {
-    font-family: 'Arial', sans-serif;
-    background: #f5f6fa;
-    color: #333;
-}
-
-/* Header */
 header {
     background: #007bff;
-    color: #fff;
+    color: white;
     padding: 15px 20px;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
 
 header h1 {
-    font-size: 1.8em;
+    margin: 0;
 }
 
-header nav a.btn {
-    background: #0056b3;
-    color: #fff;
+nav a {
+    color: white;
+    margin-left: 15px;
     text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    margin-left: 10px;
-    transition: background 0.3s;
+    font-weight: bold;
 }
 
-header nav a.btn:hover {
+nav a.btn {
+    background: #0056b3;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+nav a.btn:hover {
     background: #003f7f;
 }
 
-/* Container principal */
 .container {
-    max-width: 1100px;
-    margin: 20px auto;
     padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.05);
 }
 
-/* Tabelas */
+h2 {
+    margin-top: 0;
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 3px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #218838;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
 }
 
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-table th {
-    background: #007bff;
-    color: #fff;
-}
-
-table tr:nth-child(even) {
-    background: #f2f2f2;
-}
-
-/* Botões dentro da tabela */
-.btn-whatsapp {
-    background: #25d366;
-}
-
-.btn-excluir {
-    background: #dc3545;
-}
-
-table a.btn {
-    padding: 5px 10px;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-right: 5px;
-    transition: opacity 0.3s;
-}
-
-table a.btn:hover {
-    opacity: 0.8;
-}
-
-/* Form de cadastro */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form label {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-form input {
-    padding: 8px;
-    border-radius: 5px;
+table, th, td {
     border: 1px solid #ccc;
 }
 
-form button {
-    margin-top: 15px;
-    padding: 10px;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
+th, td {
+    padding: 8px;
+    text-align: left;
 }
 
-form button:hover {
-    background: #0056b3;
+tr:nth-child(even) {
+    background: #f9f9f9;
 }
 
-/* Footer */
+tr:hover {
+    background: #f1f1f1;
+}
+
 footer {
     text-align: center;
-    padding: 15px;
+    padding: 10px;
     background: #007bff;
-    color: #fff;
-    margin-top: 20px;
-    border-radius: 0 0 8px 8px;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
