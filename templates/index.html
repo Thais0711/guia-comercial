@@ -1,52 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Guia Comercial</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-<header>
-    <h1>📍 Guia Comercial</h1>
-    <nav>
-        <a class="btn" href="/">Início</a>
-        <a class="btn" href="/add">Cadastrar Empresa</a>
-    </nav>
-</header>
-
-<main class="container">
-    {% if lojas %}
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Endereço</th>
-            <th>Telefone</th>
-            <th>WhatsApp</th>
-            <th>Premium</th>
-            <th>Ações</th>
-        </tr>
-        {% for loja in lojas %}
-        <tr class="{{ 'premium' if loja.premium else '' }}">
-            <td>{{ loja.id }}</td>
-            <td>{{ loja.nome }}</td>
-            <td>{{ loja.endereco }}</td>
-            <td>{{ loja.telefone }}</td>
-            <td>
-                {% if loja.whatsapp %}
-                <a href="https://wa.me/{{ loja.whatsapp }}" target="_blank">WhatsApp</a>
-                {% else %}
-                -
-                {% endif %}
-            </td>
-            <td>{{ 'Sim' if loja.premium else 'Não' }}</td>
-            <td><a href="/deletar/{{ loja.id }}" onclick="return confirm('Deseja realmente excluir?')">Excluir</a></td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <p>Nenhuma loja cadastrada ainda.</p>
-    {% endif %}
-</main>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h2>Lista de Lojas</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Telefone</th>
+        <th>WhatsApp</th>
+        <th>Premium</th>
+        <th>Ações</th>
+    </tr>
+    {% for loja in lojas %}
+    <tr {% if loja.premium %} class="premium" {% endif %}>
+        <td>{{ loja.id }}</td>
+        <td>{{ loja.nome }}</td>
+        <td>{{ loja.endereco }}</td>
+        <td>{{ loja.telefone }}</td>
+        <td>
+            {% if loja.whatsapp %}
+            <a class="btn" href="https://wa.me/{{ loja.whatsapp }}" target="_blank">WhatsApp</a>
+            {% else %}-{% endif %}
+        </td>
+        <td>{{ 'Sim' if loja.premium else 'Não' }}</td>
+        <td><a class="btn delete" href="/deletar/{{ loja.id }}">Excluir</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

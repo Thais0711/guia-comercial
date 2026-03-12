@@ -1,36 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Adicionar Loja</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-<header>
-    <h1>Adicionar Loja</h1>
-    <nav>
-        <a class="btn" href="/">Início</a>
-    </nav>
-</header>
+{% extends "base.html" %}
+{% block content %}
+<h2>Adicionar Loja</h2>
+<form method="POST">
+    <label>Nome da loja</label>
+    <input type="text" name="nome" required>
 
-<main class="container">
-    <form method="POST">
-        <label>Nome da loja:</label>
-        <input type="text" name="nome" required>
-        
-        <label>Endereço:</label>
-        <input type="text" name="endereco" required>
-        
-        <label>Telefone:</label>
-        <input type="text" name="telefone">
-        
-        <label>WhatsApp:</label>
-        <input type="text" name="whatsapp">
-        
-        <label><input type="checkbox" name="premium"> Premium</label>
-        
-        <button type="submit">Adicionar</button>
-    </form>
-</main>
-</body>
-</html>
+    <label>Endereço</label>
+    <input type="text" name="endereco" required>
+
+    <label>Telefone</label>
+    <input type="text" name="telefone" required>
+
+    <label>WhatsApp (opcional)</label>
+    <input type="text" name="whatsapp">
+
+    <label>Premium</label>
+    <input type="checkbox" name="premium">
+
+    <button type="submit">Adicionar</button>
+</form>
+{% endblock %}
