@@ -1,28 +1,45 @@
-{% extends "base.html" %}
-{% block content %}
-<h2>Empresas Cadastradas</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guia Comercial</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>📍 Guia Comercial</h1>
+    <nav>
+        <a class="btn" href="/">Início</a>
+        <a class="btn" href="/add">Cadastrar Empresa</a>
+    </nav>
+</header>
 
-<form method="GET" class="search-form">
-    <input type="text" name="search" placeholder="Pesquisar por nome ou cidade..." value="{{ query or '' }}">
-    <button type="submit"><i class="fa fa-search"></i> Buscar</button>
-</form>
-
-<div class="card-grid">
-    {% for loja in lojas %}
-    <div class="card">
-        <h3>{{ loja.nome }}</h3>
-        <p><i class="fa fa-map-marker-alt"></i> {{ loja.endereco }}</p>
-        <p><i class="fa fa-phone"></i> {{ loja.telefone }}</p>
-        <div class="card-buttons">
-            <a class="btn-whatsapp" href="https://api.whatsapp.com/send?phone={{ loja.telefone|replace(' ','') }}&text=Olá {{ loja.nome }}" target="_blank">
-                <i class="fa fa-whatsapp"></i> WhatsApp
-            </a>
-            <a class="btn-edit" href="/editar/{{ loja.id }}"><i class="fa fa-edit"></i> Editar</a>
-            <a class="btn-delete" href="/deletar/{{ loja.id }}"><i class="fa fa-trash"></i> Excluir</a>
-        </div>
-    </div>
-    {% else %}
-    <p>Nenhuma empresa encontrada.</p>
-    {% endfor %}
+<div class="container">
+    <h2>Lista de Lojas</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+        {% for loja in lojas %}
+        <tr>
+            <td>{{ loja.id }}</td>
+            <td>{{ loja.nome }}</td>
+            <td>{{ loja.endereco }}</td>
+            <td>{{ loja.telefone }}</td>
+            <td>
+                <a class="btn btn-whatsapp" href="https://wa.me/{{ loja.telefone|replace('+','') }}" target="_blank">WhatsApp</a>
+                <a class="btn btn-excluir" href="/deletar/{{ loja.id }}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
-{% endblock %}
+
+<footer>
+    &copy; 2026 Guia Comercial
+</footer>
+</body>
+</html>

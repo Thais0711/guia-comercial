@@ -1,12 +1,36 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="form-card">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adicionar Loja - Guia Comercial</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <h1>📍 Guia Comercial</h1>
+    <nav>
+        <a class="btn" href="/">Início</a>
+        <a class="btn" href="/add">Cadastrar Empresa</a>
+    </nav>
+</header>
+
+<div class="container">
     <h2>Adicionar Loja</h2>
     <form method="POST">
-        <input type="text" name="nome" placeholder="Nome da Loja" required>
-        <input type="text" name="endereco" placeholder="Endereço" required>
-        <input type="text" name="telefone" placeholder="Telefone" required>
+        <label>Nome da Loja</label>
+        <input type="text" name="nome" required>
+
+        <label>Endereço</label>
+        <input type="text" name="endereco" required>
+
+        <label>Telefone</label>
+        <input type="text" name="telefone" required>
+
         <button type="submit">Adicionar</button>
     </form>
 </div>
-{% endblock %}
+
+<footer>
+    &copy; 2026 Guia Comercial
+</footer>
+</body>
+</html>
